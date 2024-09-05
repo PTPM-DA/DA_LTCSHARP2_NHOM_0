@@ -94,44 +94,5 @@
 <li>Thông tin khách hàng</li>
 <li>Người dùng có thể đánh giá và viết nhận xét về các sản phẩm.</li>
 </ul>
-#### APP
-<p>
-Quản lý shop bán quần áo
-</p>
-<ul>
-<li>Thêm và cập nhật sản phẩm</li>
-<li>Tra cứu thông tin sản phẩm</li>
-</ul>
-<p>
-Quản lý loại sản phẩm
-</p>
-<ul>
-<li>Thêm và cập nhật </li>
-</ul>
-<p>
-Quản lý khách hàng
-</p>
-<ul>
-<li>Thêm và cập nhật </li>
-<li>Tra cứu thông tin khách hàng</li>
-</ul>
-Quản lý nhân viên và chức vụ
-</p>
-<ul>
-<li>Thêm và cập nhật </li>
-<li> Phân quyền nhân viên tùy theo chức vụ</li>
-<li> Tra cứu thông tin của nhân viên </li></li>
-</ul>
-<p>
-Báo cáo
-</p>
-<ul>
-<li>Sản phẩm được mua nhiều nhất trong tháng </li>
-</ul>
-<p>
-Thống kê</p>
-<ul>
-<li>Doanh thu </li>
-<li> Đơn hàng theo ngày theo tháng, theo năm</li></li>
-</ul>
+
 
