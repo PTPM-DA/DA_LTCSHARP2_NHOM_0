@@ -1,0 +1,45 @@
+﻿@model Shop_QuanAo.Models.SanPham
+
+@{
+    ViewBag.Title = "Thêm Sản Phẩm Mới";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<h2>Thêm Sản Phẩm Mới</h2>
+
+@using (Html.BeginForm("CreateProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TenSanPham)
+        @Html.TextBoxFor(m => m.TenSanPham, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TenSanPham, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gia)
+        @Html.TextBoxFor(m => m.Gia, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Gia, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaDanhMuc)
+        @Html.DropDownListFor(m => m.MaDanhMuc, new SelectList(ViewBag.danhmuc, "MaDanhMuc", "TenDanhMuc"), 
+                              "-- Chọn danh mục --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MaDanhMuc, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MoTa)
+        @Html.TextAreaFor(m => m.MoTa, new { @class = "form-control", rows = 4 })
+        @Html.ValidationMessageFor(m => m.MoTa, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.HinhAnh)
+        <input type="file" name="imageFile" class="form-control" />
+        @Html.ValidationMessageFor(m => m.HinhAnh, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+

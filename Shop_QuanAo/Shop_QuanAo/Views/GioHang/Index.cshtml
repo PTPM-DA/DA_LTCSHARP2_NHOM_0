@@ -1,0 +1,101 @@
+﻿@model List<Shop_QuanAo.Models.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+<div class="container">
+    <h2>Giỏ Hàng</h2>
+    <form action="@Url.Action("Checkout", "GioHang")" method="post">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th> <!-- Checkbox -->
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th> <!-- Xóa -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input class="item-checkbox"
+                                   type="checkbox"
+                                   name="selectedItems"
+                                   value="@item.MaGioHang"
+                                   data-price="@item.SanPham.Gia"
+                                   data-quantity="@item.SoLuong" />
+                        </td>
+
+                        <td>
+                            <img src="~/Images/@item.SanPham.HinhAnh" alt="@item.SanPham.TenSanPham" style="width: 50px;" />
+                        </td>
+                        <td>@item.SanPham.TenSanPham</td>
+                        <td>@String.Format("{0:N0}", item.SanPham.Gia) VNĐ</td>
+
+                        <td>
+                            <form action="@Url.Action("UpdateCart", "GioHang")" method="post">
+                                <input type="hidden" name="cartItemId" value="@item.MaGioHang" />
+                                <input type="number" name="quantity" value="@item.SoLuong" min="1" class="form-control" style="width: 60px;" />
+                                <button type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
+                            </form>
+                        </td>
+                        <td>@String.Format("{0:N0}", item.SoLuong * item.SanPham.Gia) VNĐ</td>
+                        <td>
+                            <a href="@Url.Action("RemoveFromCart", "GioHang", new { cartItemId = item.MaGioHang })" class="btn btn-sm btn-danger">
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br /><br /><br /><br /><br />
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Tổng tiền:</h4>
+            </div>
+            <div class="col-md-6">
+                <h4 id="totalPrice">0 VNĐ</h4>
+            </div>
+        </div>
+        <br /><br /><br />
+
+        <button type="submit" class="btn btn-success">Thanh toán</button>
+        <a class="btn btn-info" href="/Sanpham/index">Tiếp tục Mua </a>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(".item-checkbox");
+        const totalPriceElement = document.getElementById("totalPrice");
+
+        function updateTotal() {
+            let total = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const price = parseFloat(checkbox.getAttribute("data-price"));
+                    const quantity = parseInt(checkbox.getAttribute("data-quantity"));
+                    if (!isNaN(price) && !isNaN(quantity)) {
+                        total += price * quantity;
+                    }
+                }
+            });
+            totalPriceElement.textContent = total.toLocaleString("vi-VN") + " VNĐ";
+        }
+
+        // Gắn sự kiện cho checkbox
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", updateTotal);
+        });
+    });
+</script>

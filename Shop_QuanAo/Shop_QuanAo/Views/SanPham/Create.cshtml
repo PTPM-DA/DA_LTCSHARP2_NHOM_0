@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Create Product";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@model Shop_QuanAo.Models.SanPham
+
+
+
+
+<div class="container mb-5">
+    <h2>@ViewBag.Title</h2>
+    @using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.TenSanPham, "Tên sản phẩm")
+                @Html.TextBoxFor(m => m.TenSanPham, new { @class = "form-control", placeholder = "Tên sản phẩm" })
+                @Html.ValidationMessageFor(m => m.TenSanPham)
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.MoTa, "Mô tả")
+                @Html.TextBoxFor(m => m.MoTa, new { @class = "form-control", placeholder = "Mô Tả" })
+                @Html.ValidationMessageFor(m => m.MoTa)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.Gia, "Giá")
+                @Html.TextBoxFor(m => m.Gia, new { @class = "form-control", placeholder = "Giá", type = "number" })
+                @Html.ValidationMessageFor(m => m.Gia)
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.HinhAnh, "Ảnh sản phẩm")
+                <input type="file" name="imageFile" id="imageFile" class="form-control" />
+                @Html.ValidationMessageFor(m => m.HinhAnh)
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col-md-6">
+                @Html.Label("MaDanhMuc", "Danh mục sản phẩm")
+                @Html.DropDownListFor(m => m.MaDanhMuc,
+                new SelectList(ViewBag.danhmuc, "MaDanhMuc", "TenDanhMuc"),
+                "Chọn danh mục",
+                new { @class = "form-control" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.NgayTao, "Ngày tạo")
+                @Html.TextBoxFor(m => m.NgayTao, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(m => m.NgayTao)
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Create</button>
+            <a href="/admin/quanlysanpham" class="btn btn-danger">Cancel</a>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Shop_QuanAo.Models.NguoiDung>
+@{
+    ViewBag.Title = "Quản lý người dùng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <h2>Quản lý Người Dùng</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Vai trò</th>
+                <th>Ngày tạo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.HoTen</td>
+                    <td>@user.Email</td>
+                    <td>@user.SoDienThoai</td>
+                    <td>@user.VaiTro.TenVaiTro</td>
+                    <td>@user.NgayTao.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a href="@Url.Action("EditUser", "Admin", new { id = user.MaNguoiDung })" class="btn btn-warning">Chỉnh sửa</a>
+                        <a href="@Url.Action("DeleteUser", "Admin", new { id = user.MaNguoiDung })" class="btn btn-danger">Xóa</a>
+                    </td>
+                </tr>
+}
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("CreateUser", "Admin")" class="btn btn-primary">Thêm người dùng mới</a>
+
+
+</div>

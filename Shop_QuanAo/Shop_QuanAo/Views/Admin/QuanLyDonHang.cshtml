@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Shop_QuanAo.Models.DonHang>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Quản lý đơn hàng</h2>
+
+    <!-- Table to display orders -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Tên người dùng</th>
+                <th>Tên cửa hàng</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+            <tr>
+                <td>@order.MaDonHang</td>
+                <td>@order.NguoiDung.HoTen</td> <!-- Tên người dùng -->
+                <td>@order.CuaHang.MaCuaHang?.TenCuaHang ?? "Không có cửa hàng" </td>
+                <td>@String.Format("{0:N0}", order.TongTien) VND</td>
+                <td>@order.TrangThaiDonHang</td> <!-- Trạng thái đơn hàng -->
+                <td>@order.NgayTao?.ToString("dd/MM/yyyy")</td> <!-- Ngày tạo đơn hàng -->
+                <td>
+                    <a href="@Url.Action("ChiTietDonHang", "Admin", new { id = order.MaDonHang })" class="btn btn-info btn-sm">Xem chi tiết</a>
+                    <!-- Nếu muốn thêm chức năng chỉnh sửa hoặc xóa đơn hàng, có thể thêm nút ở đây -->
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

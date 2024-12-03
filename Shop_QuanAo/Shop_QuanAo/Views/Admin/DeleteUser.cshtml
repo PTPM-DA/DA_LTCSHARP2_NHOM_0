@@ -1,0 +1,15 @@
+﻿@model Shop_QuanAo.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Xóa Người Dùng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Xóa Người Dùng</h2>
+
+<p>Bạn có chắc chắn muốn xóa người dùng <strong>@Model.HoTen</strong>?</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="@Url.Action("QuanLyNguoiDung", "Admin")" class="btn btn-secondary">Hủy</a>
+</form>

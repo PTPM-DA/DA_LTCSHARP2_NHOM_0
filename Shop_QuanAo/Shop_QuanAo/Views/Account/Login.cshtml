@@ -1,0 +1,52 @@
+﻿@model Shop_QuanAo.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section class="section-content padding-y">
+    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">Đăng nhập tài khoản</h4>
+            </header>
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+             <div class="row mx-auto">
+                <div class="col-md-12">
+                    <label for="UserName">Tên đăng nhập</label>
+                    @Html.TextBoxFor(model => model.HoTen, new { placeholder = "HoTen của bạn", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="col-md-12">
+                    <label for="Password">Mật khẩu</label>
+                    @Html.PasswordFor(model => model.MatKhau, new { placeholder = "Mật khẩu", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                </div>
+
+                <br />
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    </div>
+                    <br />
+
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-success">Đăng Nhập</button>
+                    </div>
+                </div>
+             </div>           
+            }
+
+        </article><!-- card-body.// -->
+    </div> <!-- card .// -->
+
+    <p class="text-center mt-4">Bạn chưa có tài khoản? <a href="/Account/Register">Đăng ký</a></p>
+    <br><br>
+</section>
+

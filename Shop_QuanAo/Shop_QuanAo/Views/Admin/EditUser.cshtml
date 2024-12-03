@@ -1,0 +1,49 @@
+﻿@model Shop_QuanAo.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Chỉnh sửa Người Dùng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="container">
+    <h2>Chỉnh sửa Người Dùng</h2>
+    @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.HoTen)
+            @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MatKhau)
+            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SoDienThoai)
+            @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MaVaiTro)
+            @Html.DropDownListFor(
+                m => m.MaVaiTro,
+                ViewBag.Roles != null ? new SelectList(ViewBag.Roles, "MaVaiTro", "TenVaiTro", Model.MaVaiTro) : new SelectList(Enumerable.Empty<SelectListItem>()),
+                "-- Chọn vai trò --",
+                new { @class = "form-control" }
+            )
+            @Html.ValidationMessageFor(m => m.MaVaiTro)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật người dùng</button>
+        <a class="btn btn-danger" href="/Admin/QuanLyNguoiDung">Quay lại</a>
+    }
+</div>
+

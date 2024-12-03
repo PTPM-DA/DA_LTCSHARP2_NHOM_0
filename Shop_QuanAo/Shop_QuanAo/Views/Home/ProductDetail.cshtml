@@ -1,0 +1,134 @@
+﻿@model Shop_QuanAo.Models.SanPham
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Cột bên trái: Hình ảnh sản phẩm -->
+        <div class="col-md-6">
+            <div class="product-image">
+                <img src="~/Images/@Model.HinhAnh" alt="@Model.TenSanPham" class="img-fluid" style="max-width: 100%; height: auto; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Cột bên phải: Thông tin sản phẩm -->
+        <div class="col-md-6 product-info">
+            <h2 class="product-title">@Model.TenSanPham</h2>
+            <h4 class="text-danger">Giá: @String.Format("{0:N0}", Model.Gia) VND</h4>
+            <p class="product-description">@Model.MoTa</p>
+            <div class="product-rating mt-3">
+                <span class="text-warning">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        if (i < 4)
+                        {
+                            <i class="fas fa-star"></i> <!-- Sao đầy -->
+                        }
+                        else
+                        {
+                            <i class="far fa-star"></i> <!-- Sao trống -->
+                        }
+                    }
+                </span>
+                <span class="text-muted">(3 đánh giá)</span>
+            </div>
+            <div class="mt-4">
+                <p><strong>Danh mục:</strong> @Model.DanhMucSanPham.TenDanhMuc</p>
+            </div>
+
+            <!-- Đánh giá sao -->
+            <div class="actions mt-4">
+                <a href="#" class="btn btn-primary btn-lg mb-2" style="width: 100%;">Mua ngay</a>
+                <a href="@Url.Action("AddToCart", "GioHang", new { productId = Model.MaSanPham })" class="btn btn-warning btn-lg" style="width: 100%;"> Thêm vào giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Các sản phẩm liên quan -->
+    <div class="related-products mt-5">
+        <h3>Sản phẩm liên quan</h3>
+        <div class="row">
+            @foreach (var sp in ViewBag.RelatedProducts as List<Shop_QuanAo.Models.SanPham>)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="~/Images/@sp.HinhAnh" class="card-img-top" alt="@sp.TenSanPham" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@sp.TenSanPham</h5>
+                            <p class="card-text text-danger">@String.Format("{0:N0}", sp.Gia) VND</p>
+                            <a href="@Url.Action("ProductDetail", "Home", new { id = sp.MaSanPham })" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="comments mt-5">
+        <h4>Bình luận</h4>
+        <ul class="list-unstyled">
+            <li>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-circle me-2"></i>
+                    <span class="fw-bold">Người dùng 1:</span>
+                    <span class="text-warning">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (i < 4)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        }
+                    </span>
+                </div>
+                <p class="ms-4">Sản phẩm rất tuyệt, tôi rất hài lòng với chất lượng!</p>
+            </li>
+            <li>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-circle me-2"></i>
+                    <span class="fw-bold">Người dùng 2:</span>
+                    <span class="text-warning">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (i < 4)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        }
+                    </span>
+                </div>
+                <p class="ms-4">Chất lượng tốt nhưng giá hơi cao.</p>
+            </li>
+            <li>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-circle me-2"></i>
+                    <span class="fw-bold">Người dùng 3:</span>
+                    <span class="text-warning">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (i < 5)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        }
+                    </span>
+                </div>
+                <p class="ms-4">Mua sản phẩm này là một sự lựa chọn tuyệt vời, tôi rất thích.</p>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model Shop_QuanAo.Models.NguoiDung
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="container my-5">
+    <!-- Card for User Information -->
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-primary text-white text-center py-4">
+            <h3 class="mb-0"><i class="fa fa-user-circle me-2"></i>Thông tin cá nhân</h3>
+        </div>
+        <div class="card-body">
+            <!-- User Information Rows -->
+            <div class="row mb-4">
+                <div class="col-md-3 text-md-end text-muted fw-bold">Họ tên:</div>
+                <div class="col-md-9">@Model.HoTen</div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-3 text-md-end text-muted fw-bold">Email:</div>
+                <div class="col-md-9">@Model.Email</div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-3 text-md-end text-muted fw-bold">Số điện thoại:</div>
+                <div class="col-md-9">@Model.SoDienThoai</div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-3 text-md-end text-muted fw-bold">Ngày tạo:</div>
+                <div class="col-md-9">@Model.NgayTao.ToString("dd/MM/yyyy")</div>
+            </div>
+        </div>
+
+        <!-- Card Footer with Edit Button -->
+        <div class="card-footer text-center">
+            <a href="@Url.Action("EditUsers", "Users", new { id = Model.MaNguoiDung })" class="btn btn-success btn-lg px-5 py-3">
+                <i class="fa fa-edit me-2"></i>Chỉnh sửa thông tin
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add some extra styles for enhancement -->
+<style>
+    .card {
+        border: none;
+    }
+
+    .card-header {
+        background-color: #1e3d58;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+</style>
+
+
+
