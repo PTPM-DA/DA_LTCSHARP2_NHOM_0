@@ -10,6 +10,7 @@
 -----------------------------------------------
 ### Sử dụng 
  - .Net Framework version 4.8
+ - Web MVC
  - Visual studio 2019
  - SQL Server 2019
 -----------------------------------------------
@@ -40,11 +41,10 @@
 |----------------|--------------------|--------------------|
 |  1  |  Tìm kiếm sản phẩm |     |
 |  2  |  Đăng nhập đăng ký |   |
-|  3  |  Xem thông tin sản phẩm [Trang chủ, trang tin tức, trang giới thiệu, trang xem toàn bộ sản phẩm(có bộ lọc),Xem chi tiết sản phẩm, đánh giá sản phẩm]  |     |
+|  3  |  Xem thông tin sản phẩm [Trang chủ, trang xem toàn bộ sản phẩm(có bộ lọc),Xem chi tiết sản phẩm, đánh giá sản phẩm]  |     |
 |  4  |  Quản lý thông tin tài khoản [Thông tin KH, thông tin tài khoản, thông tin đơn hàng đã mua] |    |
 |  5  |  Mua hàng  |    |
 |  6 |  Thanh toán |    |
-|  7 |  Đánh giá |    |
 
 
 <p>App: Winform </p>
@@ -58,8 +58,9 @@
 |  4  |  Quản lý sản phẩm + nhà sản xuất + AI|     |
 |  5  |  Quản lý khách hàng |    |
 |  6  |   Quản lý tin tức |    |
-|  7  |   Thống kê |    |
-|  8  |   Báo cáo |    |
+|  7  |   Quản lý đơn hàng |    |
+|  8  |   Thống kê |    |
+|  9  |   Báo cáo |    |
 
 
 ## Chức năng
@@ -75,8 +76,7 @@
 <ul>
   <li>Thêm sản phẩm vào giỏ hàng </li>
   <li>Xem lại giỏ hàng trước khi tiến hành thanh toán</li>
-   <li>Hỗ trợ nhiều phương thức thanh toán an toàn như ví điện tử, v.v.</li>
-	<li>Hiển thị thông tin chi tiết của giỏ hàng và tổng số tiền.</li>
+  <li>Hiển thị thông tin chi tiết của giỏ hàng và tổng số tiền.</li>
 </ul>
 <p>
  Quản lý thông tin tài khoản 
@@ -88,11 +88,9 @@
   <li>Quản lý thông tin cá nhân, mật khẩu</li>
   <li>Hiển thị danh sách các sản phẩm mà người dùng đã mua.</li>
 <li>Đơn hàng của người dùng</li>
-<li>Hiện thị sản phẩm yêu thích</li>
 <li>Thông tin tài khoản</li>
  <li>Đổi mật khẩu</li>
 <li>Thông tin khách hàng</li>
-<li>Người dùng có thể đánh giá và viết nhận xét về các sản phẩm.</li>
 </ul>
 
 
