@@ -440,6 +440,9 @@
     <Content Include="Views\Users\EditUsers.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Admin\QuanLyDonHang.cshtml" />
+    <Content Include="Views\GioHang\OrderConfirmation.cshtml" />
+    <Content Include="Views\GioHang\OrderHistory.cshtml" />
+    <Content Include="Views\GioHang\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Error\" />

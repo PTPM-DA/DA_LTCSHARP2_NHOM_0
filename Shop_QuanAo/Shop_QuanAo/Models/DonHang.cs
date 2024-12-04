@@ -1,6 +1,7 @@
 ﻿namespace Shop_QuanAo.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,6 +28,9 @@
 
         [ForeignKey("MaCuaHang")]
         public virtual CuaHang CuaHang { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }
+
     }
+
 
 }
