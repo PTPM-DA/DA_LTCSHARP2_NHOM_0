@@ -443,6 +443,7 @@
     <Content Include="Views\GioHang\OrderConfirmation.cshtml" />
     <Content Include="Views\GioHang\OrderHistory.cshtml" />
     <Content Include="Views\GioHang\OrderDetails.cshtml" />
+    <Content Include="Views\Admin\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Error\" />

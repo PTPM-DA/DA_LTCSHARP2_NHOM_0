@@ -38,6 +38,49 @@ namespace Shop_QuanAo.Controllers
             return View(orders);
         }
 
+        public ActionResult ChiTietDonHang(int id)
+        {
+            
+            var order = db.DonHang
+                          .Include(o => o.ChiTietDonHang.Select(c => c.SanPham)) 
+                          .FirstOrDefault(o => o.MaDonHang == id);
+
+            
+            if (order == null)
+            {
+                return HttpNotFound(); 
+            }
+
+            return View(order);
+        }
+        [HttpPost]
+        public ActionResult UpdateOrderStatus(int orderId)
+        {
+            try
+            {
+                if (orderId <= 0)
+                {
+                    throw new ArgumentException("Mã đơn hàng không hợp lệ.");
+                }
+
+                var order = db.DonHang.FirstOrDefault(o => o.MaDonHang == orderId);
+                if (order == null)
+                {
+                    throw new InvalidOperationException("Đơn hàng không tồn tại.");
+                }
+
+                order.TrangThaiDonHang = "Đã duyệt";
+                db.SaveChanges(); 
+                return RedirectToAction("QuanLyDonHang");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
+        }
+
+
         // Thêm người dùng
         public ActionResult CreateUser()
         {

@@ -24,20 +24,36 @@
         <tbody>
             @foreach (var order in Model)
             {
-            <tr>
-                <td>@order.MaDonHang</td>
-                <td>@order.NguoiDung.HoTen</td> <!-- Tên người dùng -->
-                <td>@order.CuaHang.MaCuaHang?.TenCuaHang ?? "Không có cửa hàng" </td>
-                <td>@String.Format("{0:N0}", order.TongTien) VND</td>
-                <td>@order.TrangThaiDonHang</td> <!-- Trạng thái đơn hàng -->
-                <td>@order.NgayTao?.ToString("dd/MM/yyyy")</td> <!-- Ngày tạo đơn hàng -->
-                <td>
-                    <a href="@Url.Action("ChiTietDonHang", "Admin", new { id = order.MaDonHang })" class="btn btn-info btn-sm">Xem chi tiết</a>
-                    <!-- Nếu muốn thêm chức năng chỉnh sửa hoặc xóa đơn hàng, có thể thêm nút ở đây -->
-                </td>
-            </tr>
+                <tr>
+                    <td>@order.MaDonHang</td>
+                    <td>@order.NguoiDung.HoTen</td> <!-- Tên người dùng -->
+                    <td>
+                        @if (order.CuaHang != null)
+                        {
+                            @order.CuaHang.TenCuaHang
+                        }
+                        else
+                        {
+                            @:Không có cửa hàng
+                        }
+                    </td>
+                    <td>@String.Format("{0:N0}", order.TongTien) VND</td>
+                    <td>@order.TrangThaiDonHang</td> <!-- Trạng thái đơn hàng -->
+                    <td>@(order.NgayTao.HasValue ? order.NgayTao.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                    <td>
+                        <a href="@Url.Action("ChiTietDonHang", "Admin", new { id = order.MaDonHang })" class="btn btn-info btn-sm">Xem chi tiết</a>
+
+                        
+                        @if (order.TrangThaiDonHang != "Đã duyệt")
+                        {
+                            <form action="@Url.Action("UpdateOrderStatus", "Admin")" method="post" style="display:inline;">
+                                <input type="hidden" name="orderId" value="@order.MaDonHang" />
+                                <button type="submit" class="btn btn-success btn-sm">Duyệt đơn</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
-
