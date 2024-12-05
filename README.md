@@ -53,14 +53,11 @@
 | STT | Nghiệp vụ | Phân công  |
 |----------------|--------------------|--------------------|
 |  1  |  Đăng nhập/đăng xuất |     |
-|  2  | Phân quyền  |   |
-|  3  |  Quản lý nhân viên +  chức vụ  |     |
-|  4  |  Quản lý sản phẩm + nhà sản xuất + AI|     |
+|  2  |  Phân quyền  |   |
+|  3  |  Quản lý nhân viên |     |
+|  4  |  Quản lý sản phẩm |     |
 |  5  |  Quản lý khách hàng |    |
-|  6  |   Quản lý tin tức |    |
-|  7  |   Quản lý đơn hàng |    |
-|  8  |   Thống kê |    |
-|  9  |   Báo cáo |    |
+|  6  |  Quản lý đơn hàng |    |
 
 
 ## Chức năng
